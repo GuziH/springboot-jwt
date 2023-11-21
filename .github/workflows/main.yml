@@ -1,0 +1,23 @@
+name: Projeto FOME CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build Repositorio
+      uses: actions/checkout@v2
+
+    - name: Instalacao JDK 11
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Rodar Maven
+      run: mvn clean install
